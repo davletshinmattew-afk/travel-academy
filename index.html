@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Academy — Авторские путешествия высшего класса</title>
+<meta name="description" content="Турагентство Travel Academy — авторские туры на Мальдивы, Сейшелы, Маврикий, Занзибар. Люкс и тяжёлый люкс. Контакты: +7 (921) 126-00-64">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== ПАНЕЛЬ СЛАБОВИДЯЩИХ ===== */
+.vi-bar {
+  background: #000;
+  color: #fff;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border-bottom: 2px solid #FFD700;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.vi-bar span { color: #FFD700; font-weight: bold; margin-right: 4px; }
+.vi-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+  min-width: 44px; min-height: 44px;
+  display: flex; align-items: center; justify-content: center;
+}
+.vi-btn:hover, .vi-btn:focus { background: #FFD700; color: #000; outline: 2px solid #fff; }
+.vi-btn.active { background: #FFD700; color: #000; }
+.vi-sep { color: #555; margin: 0 4px; }
+.vi-close { margin-left: auto; font-size: 18px; }
+
+/* ===== РЕЖИМЫ СЛАБОВИДЯЩИХ ===== */
+body.vi-white { background: #fff !important; color: #000 !important; }
+body.vi-black { background: #000 !important; color: #fff !important; }
+body.vi-blue  { background: #063462 !important; color: #fff !important; }
+body.vi-white *, body.vi-black *, body.vi-blue * {
+  background: transparent !important;
+  color: inherit !important;
+  border-color: currentColor !important;
+  font-family: Arial, sans-serif !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+body.vi-white a { color: #0000EE !important; }
+body.vi-black a { color: #FFD700 !important; }
+body.vi-blue  a { color: #FFD700 !important; }
+body.vi-white .vi-bar, body.vi-black .vi-bar, body.vi-blue .vi-bar {
+  background: #000 !important; color: #fff !important;
+}
+body.vi-white .vi-btn, body.vi-black .vi-btn, body.vi-blue .vi-btn {
+  color: #fff !important; border-color: #fff !important;
+}
+body[data-font="large"]  { font-size: 20px !important; }
+body[data-font="xlarge"] { font-size: 24px !important; }
+body[data-font="normal"] { font-size: 16px !important; }
+body.vi-noimg img { display: none !important; }
+body.vi-noimg .tour-img, body.vi-noimg .dest-bg { display: none !important; }
+
+/* ===== SKIP LINK (доступность) ===== */
+.skip-link {
+  position: absolute; top: -100px; left: 0; z-index: 999;
+  background: #FFD700; color: #000; padding: 8px 16px;
+  font-family: Arial, sans-serif; font-weight: bold;
+  text-decoration: none; border-radius: 0 0 4px 0;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+/* ===== BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --rose: #F2C4CE; --rose-mid: #E8A0B0; --rose-deep: #C97090;
+  --lavender: #D6C8F0; --lav-mid: #B8A6E0;
+  --sky: #C8E8F8; --cream: #FDF8F4; --warm: #FAF0E8; --mist: #F5EDF8;
+  --ink: #3A2840; --ink-mid: #6B4E6A; --ink-soft: #9B7A98;
+  --gold: #C8A882;
+}
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream); color: var(--ink);
+  overflow-x: hidden; font-weight: 300; font-size: 16px;
+  line-height: 1.7;
+}
+a:focus, button:focus { outline: 3px solid #C97090; outline-offset: 2px; }
+img { max-width: 100%; height: auto; }
+
+/* ===== NAV ===== */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 3rem;
+  background: rgba(253,248,244,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200,168,130,0.2);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo-wrap { display: flex; align-items: center; gap: 0.6rem; }
+.logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg,#F2C4CE,#D6C8F0,#C8E8F8);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; aria-hidden: true;
+}
+.logo-text { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; letter-spacing:0.06em; color:var(--ink); }
+.logo-text em { color:var(--rose-deep); font-style:italic; }
+nav ul { display:flex; gap:2.2rem; list-style:none; }
+nav ul a { font-size:0.78rem; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); text-decoration:none; transition:color 0.2s; }
+nav ul a:hover { color:var(--rose-deep); }
+.nav-cta { font-size:0.75rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; background:transparent; border:1px solid var(--rose-deep); color:var(--rose-deep); padding:0.5rem 1.3rem; border-radius:40px; cursor:pointer; transition:all 0.25s; }
+.nav-cta:hover { background:var(--rose-deep); color:white; }
+
+/* ===== HERO ===== */
+.hero { min-height:92vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:6rem 2rem 4rem; position:relative; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; z-index:0; background:radial-gradient(ellipse 90% 70% at 20% 10%,rgba(242,196,206,0.45) 0%,transparent 60%),radial-gradient(ellipse 70% 60% at 80% 20%,rgba(214,200,240,0.4) 0%,transparent 55%),radial-gradient(ellipse 80% 50% at 50% 90%,rgba(200,232,248,0.35) 0%,transparent 60%),var(--cream); }
+.hero-orb { position:absolute; border-radius:50%; filter:blur(60px); pointer-events:none; }
+.orb1 { width:400px;height:400px;background:rgba(242,196,206,0.35);top:-100px;left:-80px;animation:float1 8s ease-in-out infinite; }
+.orb2 { width:300px;height:300px;background:rgba(214,200,240,0.3);top:50px;right:-60px;animation:float2 10s ease-in-out infinite; }
+.orb3 { width:350px;height:350px;background:rgba(200,232,248,0.3);bottom:-80px;left:30%;animation:float1 12s ease-in-out infinite reverse; }
+@keyframes float1 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-30px) scale(1.05)} }
+@keyframes float2 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(20px) scale(0.97)} }
+.hero-content { position:relative; z-index:1; }
+.hero-eyebrow { font-size:0.7rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:var(--rose-deep); margin-bottom:1.4rem; display:inline-flex; align-items:center; gap:0.7rem; }
+.hero-eyebrow::before,.hero-eyebrow::after { content:''; display:inline-block; width:28px; height:1px; background:var(--rose-mid); }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,7vw,5.5rem); font-weight:300; line-height:1.08; margin-bottom:1rem; color:var(--ink); letter-spacing:-0.01em; }
+.hero h1 em { font-style:italic; color:var(--rose-deep); }
+.hero h1 span { color:var(--lav-mid); }
+.hero-sub { font-size:1rem; font-weight:300; color:var(--ink-soft); max-width:480px; line-height:1.8; margin:0 auto 2.5rem; }
+.hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.btn-hero { font-family:'Jost',sans-serif; font-size:0.78rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; padding:0.9rem 2.2rem; border-radius:40px; cursor:pointer; transition:all 0.28s; border:none; min-height:44px; }
+.btn-fill { background:linear-gradient(135deg,var(--rose-deep),var(--lav-mid)); color:white; }
+.btn-fill:hover { opacity:0.88; transform:translateY(-2px); }
+.btn-outline { background:transparent; color:var(--ink-mid); border:1px solid rgba(200,168,130,0.4); }
+.btn-outline:hover { border-color:var(--rose-deep); color:var(--rose-deep); transform:translateY(-2px); }
+.floating-pill { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.8); border:1px solid rgba(200,168,130,0.25); border-radius:40px; padding:0.45rem 1rem; margin:2.5rem auto 0; font-size:0.75rem; color:var(--ink-soft); }
+.pill-dot { width:6px; height:6px; border-radius:50%; background:var(--rose-deep); }
+
+/* ===== DESTINATIONS ===== */
+.dest-strip { display:flex; gap:0; overflow:hidden; padding:0 3rem; }
+.dest-card { flex:1; min-width:0; padding:2.5rem 1.8rem; position:relative; overflow:hidden; cursor:pointer; transition:flex 0.5s cubic-bezier(0.4,0,0.2,1); display:flex; flex-direction:column; justify-content:flex-end; min-height:320px; }
+.dest-card:hover,.dest-card:focus { flex:1.7; outline:none; }
+.dest-bg { position:absolute; inset:0; transition:transform 0.5s ease; }
+.dest-card:hover .dest-bg,.dest-card:focus .dest-bg { transform:scale(1.05); }
+.dest-bg-maldives { background:linear-gradient(160deg,#C8E8F8,#7EB8D8); }
+.dest-bg-seychelles { background:linear-gradient(160deg,#C8E8C8,#78C090); }
+.dest-bg-mauritius { background:linear-gradient(160deg,#F2C4CE,#C878A0); }
+.dest-bg-zanzibar { background:linear-gradient(160deg,#FAD898,#E0A858); }
+.dest-bg-arctic { background:linear-gradient(160deg,#D6C8F0,#9888D0); }
+.dest-bg-bespoke { background:linear-gradient(160deg,#F8E8D8,#D8B898); }
+.dest-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(58,40,64,0.55) 0%,transparent 50%); }
+.dest-content { position:relative; z-index:1; color:white; }
+.dest-label { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:0.35rem; }
+.dest-name { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:300; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.dest-detail { font-size:0.78rem; color:rgba(255,255,255,0.7); margin-top:0.3rem; opacity:0; transition:opacity 0.4s 0.1s; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.dest-card:hover .dest-detail,.dest-card:focus .dest-detail { opacity:1; }
+
+/* ===== SECTIONS ===== */
+section { padding:5rem 3rem; max-width:1200px; margin:0 auto; }
+.sec-label { font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--rose-deep); margin-bottom:0.5rem; font-weight:400; }
+.sec-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:300; line-height:1.15; margin-bottom:0.4rem; }
+.sec-title em { font-style:italic; color:var(--rose-deep); }
+.sec-sub { font-size:0.92rem; color:var(--ink-soft); margin-bottom:3rem; max-width:480px; line-height:1.75; font-weight:300; }
+
+/* ===== TOURS ===== */
+.tours-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.2rem; }
+.tour-card { background:white; border:1px solid rgba(200,168,130,0.18); border-radius:20px; overflow:hidden; transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s; }
+.tour-card:hover { transform:translateY(-6px); box-shadow:0 24px 60px rgba(58,40,64,0.1); border-color:rgba(200,168,130,0.4); }
+.tour-img { height:180px; position:relative; overflow:hidden; }
+.tour-body { padding:1.3rem 1.5rem 1.5rem; }
+.tour-tag { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--rose-deep); margin-bottom:0.4rem; font-weight:400; }
+.tour-name { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; line-height:1.2; margin-bottom:0.5rem; }
+.tour-desc { font-size:0.82rem; color:var(--ink-soft); line-height:1.65; margin-bottom:1.1rem; font-weight:300; }
+.tour-footer { display:flex; align-items:flex-end; justify-content:space-between; }
+.tour-price-from { font-size:0.65rem; color:var(--ink-soft); display:block; margin-bottom:2px; }
+.tour-price-amt { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:400; color:var(--ink); }
+.tour-price-sub { font-size:0.7rem; color:var(--ink-soft); }
+.tour-btn { font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--rose-deep); border:1px solid var(--rose-mid); background:transparent; padding:0.42rem 0.9rem; border-radius:30px; cursor:pointer; font-family:'Jost',sans-serif; text-decoration:none; transition:all 0.2s; min-height:44px; display:inline-flex; align-items:center; }
+.tour-btn:hover { background:var(--rose-deep); color:white; border-color:var(--rose-deep); }
+
+/* ===== PROMISE ===== */
+.promise-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1.2rem; margin-top:2.5rem; }
+.promise-card { background:var(--mist); border:1px solid rgba(214,200,240,0.4); border-radius:16px; padding:1.5rem 1.3rem; transition:transform 0.25s; }
+.promise-card:hover { transform:translateY(-4px); }
+.promise-icon { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:0.9rem; }
+.promise-title { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:400; margin-bottom:0.35rem; }
+.promise-text { font-size:0.8rem; color:var(--ink-soft); line-height:1.6; font-weight:300; }
+
+/* ===== NEWS TICKER ===== */
+.news-band { background:rgba(242,196,206,0.12); border-top:1px solid rgba(242,196,206,0.3); border-bottom:1px solid rgba(242,196,206,0.3); padding:1.5rem 0; overflow:hidden; }
+.news-ticker { display:flex; gap:4rem; animation:tick 28s linear infinite; white-space:nowrap; }
+.news-item { font-size:0.8rem; color:var(--ink-soft); font-weight:300; }
+.news-item strong { color:var(--rose-deep); font-weight:400; }
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ===== LEGAL BLOCK ===== */
+.legal-section { background:var(--warm); border-top:1px solid rgba(200,168,130,0.15); padding:3rem 3rem; }
+.legal-inner { max-width:1200px; margin:0 auto; }
+.legal-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.2rem; margin-top:1.5rem; }
+.legal-card { background:white; border:1px solid rgba(200,168,130,0.15); border-radius:14px; padding:1.3rem 1.5rem; }
+.legal-card h3 { font-family:'Cormorant Garamond',serif; font-size:0.95rem; font-weight:400; margin-bottom:0.5rem; color:var(--ink); }
+.legal-card p, .legal-card a { font-size:0.8rem; color:var(--ink-soft); line-height:1.6; font-weight:300; display:block; }
+.legal-card a { color:var(--rose-deep); text-decoration:underline; margin-top:0.2rem; }
+.legal-card a:hover { color:var(--ink); }
+
+/* ===== CONTACTS ===== */
+.contacts-section { background:var(--mist); border-top:1px solid rgba(214,200,240,0.2); padding:5rem 3rem; }
+.contacts-inner { max-width:1200px; margin:0 auto; }
+.contacts-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:2.5rem; }
+.contact-card { background:white; border:1px solid rgba(200,168,130,0.2); border-radius:18px; padding:1.8rem 2rem; transition:border-color 0.25s,transform 0.25s; }
+.contact-card:hover { border-color:var(--rose-mid); transform:translateY(-3px); }
+.contact-name { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; margin-bottom:0.2rem; }
+.contact-role { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--rose-deep); margin-bottom:1.1rem; font-weight:400; }
+.contact-link { display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--ink-mid); text-decoration:none; margin-bottom:0.45rem; transition:color 0.2s; min-height:44px; }
+.contact-link:hover { color:var(--rose-deep); }
+.contact-spec { font-size:0.73rem; color:var(--ink-soft); margin-top:0.8rem; line-height:1.5; }
+
+/* ===== FOOTER ===== */
+footer { background:var(--ink); color:rgba(255,255,255,0.7); padding:2.5rem 3rem; font-size:0.8rem; line-height:1.7; }
+.footer-inner { max-width:1200px; margin:0 auto; }
+.footer-top { display:grid; grid-template-columns:2fr 1fr 1fr; gap:2rem; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,0.1); }
+.footer-brand { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:#fff; margin-bottom:0.5rem; }
+.footer-brand em { color:var(--rose-mid); font-style:italic; }
+.footer-col h4 { font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:0.8rem; font-weight:400; }
+.footer-col a { color:rgba(255,255,255,0.6); text-decoration:none; display:block; margin-bottom:0.3rem; font-size:0.8rem; transition:color 0.2s; }
+.footer-col a:hover { color:var(--rose-mid); }
+.footer-bottom { font-size:0.74rem; color:rgba(255,255,255,0.4); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
+.footer-bottom a { color:rgba(255,255,255,0.4); text-decoration:underline; }
+.footer-bottom a:hover { color:rgba(255,255,255,0.7); }
+
+/* ===== COOKIE NOTICE ===== */
+.cookie-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
+  background: rgba(58,40,64,0.97); color: #fff;
+  padding: 1rem 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  font-family: 'Jost', sans-serif; font-size: 0.82rem; line-height: 1.5;
+}
+.cookie-bar a { color: var(--rose-mid); }
+.cookie-accept {
+  background: var(--rose-deep); color: white; border: none;
+  padding: 0.5rem 1.2rem; border-radius: 30px; cursor: pointer;
+  font-size: 0.78rem; white-space: nowrap; min-height: 44px;
+  font-family: 'Jost', sans-serif;
+}
+.cookie-accept:hover { background: var(--rose-mid); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px) {
+  .legal-grid { grid-template-columns:1fr; }
+  .footer-top { grid-template-columns:1fr; }
+}
+@media(max-width:700px) {
+  nav ul { display:none; }
+  nav { padding:1rem 1.5rem; }
+  .dest-strip { flex-direction:column; padding:0; }
+  .dest-card { min-height:140px; }
+  section { padding:3.5rem 1.2rem; }
+  .contacts-grid { grid-template-columns:1fr; }
+  .contacts-section { padding:3.5rem 1.2rem; }
+  .legal-section { padding:3rem 1.2rem; }
+  footer { padding:2rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- SKIP LINK (доступность, WCAG 2.1) -->
+<a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
+
+<!-- ПАНЕЛЬ ДЛЯ СЛАБОВИДЯЩИХ (ГОСТ Р 52872-2019) -->
+<div class="vi-bar" role="toolbar" aria-label="Версия для слабовидящих">
+  <span>👁 Версия для слабовидящих:</span>
+
+  <span style="font-size:12px;color:#aaa">Цвет:</span>
+  <button class="vi-btn" id="vi-white" onclick="setVI('white')" aria-label="Белый фон">Белый</button>
+  <button class="vi-btn" id="vi-black" onclick="setVI('black')" aria-label="Чёрный фон">Чёрный</button>
+  <button class="vi-btn" id="vi-blue"  onclick="setVI('blue')"  aria-label="Синий фон">Синий</button>
+  <button class="vi-btn" id="vi-reset" onclick="setVI('reset')" aria-label="Обычная версия">Стандартный</button>
+
+  <span class="vi-sep">|</span>
+  <span style="font-size:12px;color:#aaa">Шрифт:</span>
+  <button class="vi-btn" onclick="setFont('normal')" aria-label="Обычный размер шрифта">A</button>
+  <button class="vi-btn" onclick="setFont('large')"  aria-label="Крупный шрифт" style="font-size:17px">A+</button>
+  <button class="vi-btn" onclick="setFont('xlarge')" aria-label="Очень крупный шрифт" style="font-size:20px">A++</button>
+
+  <span class="vi-sep">|</span>
+  <button class="vi-btn" onclick="toggleImages()" id="vi-img-btn" aria-label="Отключить изображения">Без картинок</button>
+
+  <button class="vi-btn vi-close" onclick="document.querySelector('.vi-bar').style.display='none'" aria-label="Закрыть панель">✕</button>
+</div>
+
+<!-- НАВИГАЦИЯ -->
+<header role="banner">
+  <nav role="navigation" aria-label="Основное меню">
+    <div class="logo-wrap">
+      <div class="logo-icon" aria-hidden="true">✈</div>
+      <div class="logo-text" aria-label="Travel Academy">Travel <em>Academy</em></div>
+    </div>
+    <ul>
+      <li><a href="#destinations">Направления</a></li>
+      <li><a href="#tours">Туры</a></li>
+      <li><a href="#about">О компании</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})" aria-label="Подобрать тур — перейти к контактам">Подобрать тур</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<main id="main-content">
+<section class="hero" aria-label="Главный экран">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-orb orb1" aria-hidden="true"></div>
+  <div class="hero-orb orb2" aria-hidden="true"></div>
+  <div class="hero-orb orb3" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Авторские путешествия высшего класса</p>
+    <h1>Там, где<br><em>мечты</em><br><span>становятся</span> реальностью</h1>
+    <p class="hero-sub">Мальдивы, Сейшелы, Маврикий, Занзибар — места, которые меняют восприятие мира. Мы создаём путешествия, а не просто туры.</p>
+    <div class="hero-actions">
+      <button class="btn-hero btn-fill" onclick="document.getElementById('destinations').scrollIntoView({behavior:'smooth'})">Открыть направления</button>
+      <button class="btn-hero btn-outline" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">Личная консультация</button>
+    </div>
+    <div class="floating-pill">
+      <div class="pill-dot" aria-hidden="true"></div>
+      Только индивидуальные маршруты · Люкс и тяжёлый люкс
+    </div>
+  </div>
+</section>
+
+<!-- НАПРАВЛЕНИЯ -->
+<section id="destinations" aria-label="Направления">
+  <div style="padding:0 3rem 1rem;">
+    <div class="sec-label">Куда мы везём</div>
+    <h2 class="sec-title">Наши <em>направления</em></h2>
+  </div>
+  <div class="dest-strip" role="list">
+    <div class="dest-card" role="listitem" tabindex="0" aria-label="Мальдивы — приватные острова, Over Water Villas">
+      <div class="dest-bg dest-bg-maldives" aria-hidden="true"></div>
+      <div class="dest-overlay" aria-hidden="true"></div>
+      <div class="dest-content">
+        <div class="dest-label">Индийский океан</div>
+        <div class="dest-name">Мальдивы</div>
+        <div class="dest-detail">Приватные острова · Over Water Villas</div>
+      </div>
+    </div>
+    <div class="dest-card" role="listitem" tabindex="0" aria-label="Сейшелы — гранитные острова, эксклюзивные виллы">
+      <div class="dest-bg dest-bg-seychelles" aria-hidden="true"></div>
+      <div class="dest-overlay" aria-hidden="true"></div>
+      <div class="dest-content">
+        <div class="dest-label">Индийский океан</div>
+        <div class="dest-name">Сейшелы</div>
+        <div class="dest-detail">Гранитные острова · Эксклюзивные виллы</div>
+      </div>
+    </div>
+    <div class="dest-card" role="listitem" tabindex="0" aria-label="Маврикий — рай на земле, 5-звёздочные резорты">
+      <div class="dest-bg dest-bg-mauritius" aria-hidden="true"></div>
+      <div class="dest-overlay" aria-hidden="true"></div>
+      <div class="dest-content">
+        <div class="dest-label">Африка</div>
+        <div class="dest-name">Маврикий</div>
+        <div class="dest-detail">Рай на земле · 5★ Resorts</div>
+      </div>
+    </div>
+    <div class="dest-card" role="listitem" tabindex="0" aria-label="Занзибар — пряный остров, сафари и океан">
+      <div class="dest-bg dest-bg-zanzibar" aria-hidden="true"></div>
+      <div class="dest-overlay" aria-hidden="true"></div>
+      <div class="dest-content">
+        <div class="dest-label">Восточная Африка</div>
+        <div class="dest-name">Занзибар</div>
+        <div class="dest-detail">Пряный остров · Сафари + Океан</div>
+      </div>
+    </div>
+    <div class="dest-card" role="listitem" tabindex="0" aria-label="Арктика и Антарктида — экспедиции, айсберги">
+      <div class="dest-bg dest-bg-arctic" aria-hidden="true"></div>
+      <div class="dest-overlay" aria-hidden="true"></div>
+      <div class="dest-content">
+        <div class="dest-label">Антарктида / Арктика</div>
+        <div class="dest-name">Полюса</div>
+        <div class="dest-detail">Экспедиции · Айсберги · Пингвины</div>
+      </div>
+    </div>
+    <div class="dest-card" role="listitem" tabindex="0" aria-label="Авторские маршруты — маршруты без шаблонов">
+      <div class="dest-bg dest-bg-bespoke" aria-hidden="true"></div>
+      <div class="dest-overlay" aria-hidden="true"></div>
+      <div class="dest-content">
+        <div class="dest-label">Только для вас</div>
+        <div class="dest-name">Авторские</div>
+        <div class="dest-detail">Маршруты под вас · Без шаблонов</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- НОВОСТИ -->
+<div class="news-band" role="marquee" aria-label="Актуальные новости туризма" aria-live="off">
+  <div class="news-ticker">
+    <span class="news-item">✦ <strong>Турция:</strong> Оплата рублями через СБП — уже 1000+ точек &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Антарктида:</strong> Новый 2027 год на Swan Hellenic Diana — от $10 410 &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Бали:</strong> Блоки мест из Москвы Turkish Airlines от 90 900 ₽ &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Занзибар + Сафари:</strong> Миграция антилоп гну — июнь и сентябрь &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Турция:</strong> Оплата рублями через СБП — уже 1000+ точек &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Антарктида:</strong> Новый 2027 год на Swan Hellenic Diana — от $10 410 &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Бали:</strong> Блоки мест из Москвы Turkish Airlines от 90 900 ₽ &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Занзибар + Сафари:</strong> Миграция антилоп гну — июнь и сентябрь &nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- ТУРЫ -->
+<section id="tours" aria-labelledby="tours-heading">
+  <div class="sec-label">Актуальные предложения</div>
+  <h2 class="sec-title" id="tours-heading">Путешествия, которые<br><em>останутся с вами навсегда</em></h2>
+  <p class="sec-sub">Каждый маршрут — это история. Мы не продаём ночи в отелях, мы создаём воспоминания.</p>
+  <div class="tours-grid">
+
+    <article class="tour-card" aria-label="Тур: Мальдивы — Over Water Villa Experience">
+      <div class="tour-img" style="background:linear-gradient(160deg,#E0F0F8,#A8D0E8)" role="img" aria-label="Мальдивы, лагуна">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🏝</div>
+        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Люкс</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-tag">Мальдивы · Индийский океан</div>
+        <h3 class="tour-name">Over Water Villa Experience</h3>
+        <p class="tour-desc">Бунгало над лагуной, приватный причал, ужин под звёздами в океане. Полная персонализация под ваш запрос.</p>
+        <div class="tour-footer">
+          <div><span class="tour-price-from">стоимость</span><span class="tour-price-amt">по запросу</span></div>
+          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Мальдивы">Детали</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tour-card" aria-label="Тур: Сейшелы — Острова вне времени">
+      <div class="tour-img" style="background:linear-gradient(160deg,#D0E8D0,#88C0A0)" role="img" aria-label="Сейшелы, гранитные острова">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🌴</div>
+        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Уникально</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-tag">Сейшелы · Архипелаг</div>
+        <h3 class="tour-name">Острова вне времени</h3>
+        <p class="tour-desc">Ла-Диг, Праслен, Маэ — гранитные острова с нетронутой природой. Частные яхты, скрытые бухты, закаты без туристов.</p>
+        <div class="tour-footer">
+          <div><span class="tour-price-from">стоимость</span><span class="tour-price-amt">по запросу</span></div>
+          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Сейшелы">Детали</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tour-card" aria-label="Тур: Маврикий — The Westin Turtle Bay 5*">
+      <div class="tour-img" style="background:linear-gradient(160deg,#F2C4CE,#D898B8);position:relative;overflow:hidden" role="img" aria-label="Маврикий, The Westin Turtle Bay">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🌺</div>
+        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#C97090;font-family:'Jost',sans-serif">🔥 Горит</div>
+        <div style="position:absolute;top:12px;right:14px;background:rgba(201,112,144,0.9);color:white;border-radius:20px;padding:3px 10px;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase">Новое</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-tag">Маврикий · Вылет 10 октября · 10 ночей</div>
+        <h3 class="tour-name">The Westin Turtle Bay Resort &amp; Spa 5★</h3>
+        <p class="tour-desc">Отель на берегу живописной бухты с кристально чистой водой и богатым подводным миром. Emirates, полупансион. Продли лето на Маврикии!</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">✈ Emirates</span>
+          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🍽 Полупансион</span>
+          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🛡 Страховка</span>
+        </div>
+        <div class="tour-footer">
+          <div>
+            <span class="tour-price-from">от</span>
+            <span class="tour-price-amt">298 460 ₽</span>
+            <span class="tour-price-sub"> / чел (DBL)</span>
+          </div>
+          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Маврикий The Westin">Детали</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tour-card" aria-label="Тур: Мальдивы — Adaaran Club Rannalhi 4*, 14 ночей всё включено">
+      <div class="tour-img" style="background:linear-gradient(160deg,#C8E8F8,#7EB8D8);position:relative;overflow:hidden" role="img" aria-label="Мальдивы, Adaaran Club Rannalhi">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🏝</div>
+        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#4A90D9;font-family:'Jost',sans-serif">ALL INCLUSIVE</div>
+        <div style="position:absolute;top:12px;right:14px;background:rgba(74,144,217,0.9);color:white;border-radius:20px;padding:3px 10px;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase">Новое</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-tag">Мальдивы · Вылет 1 июля · 14 ночей</div>
+        <h3 class="tour-name">Adaaran Club Rannalhi 4★</h3>
+        <p class="tour-desc">Компактный уединённый остров с широкой песчаной косой — одно из лучших мест на архипелаге. Прямой рейс из Москвы, всё включено, уютная атмосфера без суеты.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">✈ Прямой рейс</span>
+          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🍽 Всё включено</span>
+          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🧳 Багаж 23 кг</span>
+          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🚤 Катер ~40 мин</span>
+        </div>
+        <div class="tour-footer">
+          <div>
+            <span class="tour-price-from">от</span>
+            <span class="tour-price-amt">630 400 ₽</span>
+            <span class="tour-price-sub"> / 2 чел</span>
+          </div>
+          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Мальдивы Adaaran Club Rannalhi">Детали</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tour-card" aria-label="Тур: Занзибар — Сафари и Океан">
+      <div class="tour-img" style="background:linear-gradient(160deg,#FAE0A8,#E8B858)" role="img" aria-label="Занзибар, пляж и дикая природа">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🦁</div>
+        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Эксклюзив</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-tag">Занзибар · Танзания</div>
+        <h3 class="tour-name">Сафари + Океан</h3>
+        <p class="tour-desc">Миграция антилоп гну, кратер Нгоронгоро, Большая пятёрка — и 4 дня на белых пляжах Занзибара. Июнь или сентябрь.</p>
+        <div class="tour-footer">
+          <div><span class="tour-price-from">от</span><span class="tour-price-amt">386 694 ₽</span><span class="tour-price-sub"> / чел</span></div>
+          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Занзибар, цена от 386694 рублей">Детали</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tour-card" aria-label="Тур: Антарктида — Антарктическая одиссея, Новый год 2027">
+      <div class="tour-img" style="background:linear-gradient(160deg,#D8D0F0,#9888C8)" role="img" aria-label="Антарктида, айсберги">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">❄️</div>
+        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Тяжёлый люкс</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-tag">Антарктида · Декабрь 2026</div>
+        <h3 class="tour-name">Антарктическая одиссея</h3>
+        <p class="tour-desc">Встреча Нового 2027 года среди айсбергов. Swan Hellenic Diana, русскоязычная группа. Айсберги, пингвины, сауна с видом на полюс.</p>
+        <div class="tour-footer">
+          <div><span class="tour-price-from">от</span><span class="tour-price-amt">$10 410</span><span class="tour-price-sub"> / чел</span></div>
+          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Антарктида, цена от 10410 долларов">Детали</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tour-card" aria-label="Авторский маршрут — путешествие под вас">
+      <div class="tour-img" style="background:linear-gradient(160deg,#EAD8C8,#C8A888)" role="img" aria-label="Авторское путешествие">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">✨</div>
+        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Авторский</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-tag">Любое направление</div>
+        <h3 class="tour-name">Маршрут под вас</h3>
+        <p class="tour-desc">Расскажите о своей мечте — мы создадим путешествие, которого не существует в каталогах. Полная приватность, ваш темп, ваши желания.</p>
+        <div class="tour-footer">
+          <div><span class="tour-price-from">индивидуально</span><span class="tour-price-amt">от мечты</span></div>
+          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Обсудить авторский маршрут">Обсудить</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- О КОМПАНИИ (обязательно по ст. 9 ЗоЗПП) -->
+<section id="about" style="background:var(--warm);padding:4rem 3rem;max-width:100%">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="sec-label">Наш подход</div>
+    <h2 class="sec-title">Почему <em>Travel Academy</em></h2>
+    <div class="promise-grid">
+      <div class="promise-card">
+        <div class="promise-icon" style="background:rgba(242,196,206,0.4)" aria-hidden="true">🎯</div>
+        <h3 class="promise-title">Только люкс</h3>
+        <p class="promise-text">Работаем исключительно с премиальными и ультра-люксовыми отелями. Никаких компромиссов.</p>
+      </div>
+      <div class="promise-card">
+        <div class="promise-icon" style="background:rgba(214,200,240,0.4)" aria-hidden="true">✦</div>
+        <h3 class="promise-title">Авторские маршруты</h3>
+        <p class="promise-text">Каждое путешествие создаётся с нуля под вас. Шаблонов не существует.</p>
+      </div>
+      <div class="promise-card">
+        <div class="promise-icon" style="background:rgba(200,232,248,0.4)" aria-hidden="true">🌊</div>
+        <h3 class="promise-title">Уникальные места</h3>
+        <p class="promise-text">Знаем тайные уголки планеты, куда не возят массовые туры. Реальная эксклюзивность.</p>
+      </div>
+      <div class="promise-card">
+        <div class="promise-icon" style="background:rgba(250,216,152,0.4)" aria-hidden="true">💎</div>
+        <h3 class="promise-title">Личный менеджер</h3>
+        <p class="promise-text">Один человек ведёт вас от идеи до возвращения. На связи 24/7 во время путешествия.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section class="contacts-section" id="contacts" aria-labelledby="contacts-heading">
+  <div class="contacts-inner">
+    <div class="sec-label">Мы на связи</div>
+    <h2 class="sec-title" id="contacts-heading">Начните с <em>разговора</em></h2>
+    <p class="sec-sub">Расскажите о вашей мечте — мы предложим маршрут, который превзойдёт ожидания.</p>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <div class="contact-name">Мария Мошкова</div>
+        <div class="contact-role">Старший менеджер · Люкс и авторские маршруты</div>
+        <a class="contact-link" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Telegram Марии Мошковой: @marymoshkova">
+          <span aria-hidden="true">✈</span> @marymoshkova в Telegram
+        </a>
+        <a class="contact-link" href="tel:+79211260064" aria-label="Телефон Марии: плюс 7 921 126 00 64">
+          <span aria-hidden="true">☎</span> +7 (921) 126-00-64
+        </a>
+        <p class="contact-spec">Мальдивы · Сейшелы · Маврикий · Африка · Антарктида · Танзания</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-name">Юлия</div>
+        <div class="contact-role">Специалист по Азии и Тихоокеанскому региону</div>
+        <a class="contact-link" href="https://t.me/Julya_supernova" target="_blank" rel="noopener noreferrer" aria-label="Telegram Юлии: @Julya_supernova">
+          <span aria-hidden="true">✈</span> @Julya_supernova в Telegram
+        </a>
+        <a class="contact-link" href="tel:+79268867041" aria-label="Телефон Юлии: плюс 7 926 886 70 41">
+          <span aria-hidden="true">☎</span> +7 (926) 886-70-41
+        </a>
+        <p class="contact-spec">Вьетнам · Нячанг · Камрань · Фукуок · Бали · Индонезия</p>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;background:rgba(242,196,206,0.12);border:1px solid rgba(242,196,206,0.35);border-radius:14px;padding:1.3rem 1.8rem;font-size:0.84rem;color:var(--ink-soft);line-height:1.7">
+      Напишите ваши <strong style="color:var(--ink);font-weight:400">даты, состав и направление</strong> — мы подберём варианты в течение нескольких часов.
+    </div>
+  </div>
+</section>
+
+<!-- ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ (ст. 9 ЗоЗПП РФ + 132-ФЗ «Об основах туристской деятельности») -->
+<div class="legal-section" role="contentinfo" aria-label="Юридическая информация">
+  <div class="legal-inner">
+    <div class="sec-label">Информация о компании</div>
+    <h2 class="sec-title" style="font-size:1.6rem">Реквизиты и <em>документы</em></h2>
+    <p style="font-size:0.82rem;color:var(--ink-soft);margin-bottom:0;margin-top:0.3rem">Обязательное раскрытие информации по требованиям Закона РФ № 2300-1 «О защите прав потребителей» (ст. 9) и ФЗ № 132-ФЗ «Об основах туристской деятельности в РФ»</p>
+
+    <div class="legal-grid">
+      <div class="legal-card">
+        <h3>Исполнитель услуг</h3>
+        <p>Наименование: <strong>ИП Мошкова Мария Петровна</strong></p>
+        <p style="margin-top:0.4rem">ОГРНИП: 321352500046989<br>
+        ИНН: 352828841133<br>
+        ОКПО: 2012030106</p>
+        <p style="margin-top:0.4rem">Дата регистрации: 22 ноября 2021 г.<br>
+        Регистратор: УФНС по Вологодской области</p>
+        <p style="margin-top:0.4rem">Адрес регистрации: 162627, Вологодская область, г. Череповец, ул. Монтклер, д. 3Б к.1, кв. 30</p>
+        <p style="margin-top:0.4rem">Режим работы: пн–пт 10:00–19:00,<br>сб 11:00–16:00, вс — выходной</p>
+        <p style="margin-top:0.4rem">Налоговый режим: УСН<br>
+        Категория МСП: микропредприятие</p>
+      </div>
+
+      <div class="legal-card">
+        <h3>Лицензии и реестры</h3>
+        <p>Турагентская деятельность в РФ не лицензируется (ФЗ № 132-ФЗ).<br>
+        ИП Мошкова М.П. действует как <strong>турагент</strong> и реализует турпродукт туроператоров, имеющих финансовое обеспечение.</p>
+        <p style="margin-top:0.6rem">ОКВЭД: <strong>79.11</strong> — Деятельность туристических агентств<br>
+        Дополнительно: 79.90, 85.42</p>
+        <p style="margin-top:0.6rem">Сведения о туроператоре, через которого реализуется конкретный турпродукт (наименование, реестровый номер, финансовое обеспечение), предоставляются при заключении договора.</p>
+        <p style="margin-top:0.6rem">Проверить туроператора: <a href="https://www.russiatourism.ru/contents/turistam/reestr-turoperatorov/" target="_blank" rel="noopener noreferrer">Реестр Ростуризма</a></p>
+      </div>
+
+      <div class="legal-card">
+        <h3>Права потребителей</h3>
+        <p>Оказание услуг регулируется:</p>
+        <p>— Закон РФ № 2300-1 «О защите прав потребителей»</p>
+        <p>— ФЗ № 132-ФЗ «Об основах туристской деятельности в РФ»</p>
+        <p>— Постановление Правительства РФ № 1208 «Правила оказания услуг по реализации туристского продукта»</p>
+        <p style="margin-top:0.6rem">По вопросам защиты прав потребителей:<br>
+        Роспотребнадзор: <a href="tel:88002000600">8-800-200-06-00</a><br>
+        <a href="https://rospotrebnadzor.ru" target="_blank" rel="noopener noreferrer">rospotrebnadzor.ru</a></p>
+      </div>
+
+      <div class="legal-card">
+        <h3>Персональные данные</h3>
+        <p>Обработка персональных данных осуществляется в соответствии с ФЗ № 152-ФЗ «О персональных данных».</p>
+        <p style="margin-top:0.5rem">Оставляя контактные данные, вы соглашаетесь на их обработку в целях оказания туристских услуг.</p>
+        <a href="#" aria-label="Политика конфиденциальности (файл откроется)">Политика конфиденциальности</a>
+        <a href="#" aria-label="Согласие на обработку персональных данных">Согласие на обработку ПД</a>
+      </div>
+
+      <div class="legal-card">
+        <h3>Договор и оплата</h3>
+        <p>Договор о реализации туристского продукта заключается в письменной форме до начала путешествия.</p>
+        <p style="margin-top:0.5rem">Цены на туры указаны в рублях РФ и актуальны на дату публикации. Окончательная стоимость фиксируется в договоре.</p>
+        <p style="margin-top:0.5rem">Турист вправе отказаться от исполнения договора до начала путешествия при условии оплаты фактически понесённых расходов (ст. 32 ЗоЗПП).</p>
+      </div>
+
+      <div class="legal-card">
+        <h3>Претензии и споры</h3>
+        <p>Претензии принимаются в течение 20 дней после окончания тура в письменной форме.</p>
+        <p style="margin-top:0.5rem">Срок рассмотрения претензии — 10 дней.</p>
+        <p style="margin-top:0.5rem">Адрес для претензий:<br>162627, Вологодская область, г. Череповец,<br>ул. Монтклер, д. 3Б к.1, кв. 30<br>ИП Мошкова Мария Петровна</p>
+        <p style="margin-top:0.5rem">Telegram: <a href="https://t.me/marymoshkova">@marymoshkova</a><br>
+        Тел.: <a href="tel:+79211260064">+7 (921) 126-00-64</a></p>
+        <p style="margin-top:0.5rem">Споры разрешаются в судебном порядке по месту нахождения потребителя или исполнителя (по выбору потребителя).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main><!-- /main -->
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Travel <em>Academy</em></div>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);max-width:320px;line-height:1.6;margin-top:0.5rem">
+          Авторские путешествия высшего класса. Мальдивы, Сейшелы, Маврикий, Занзибар, Арктика. Люкс и тяжёлый люкс.
+        </p>
+        <p style="margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.4)">
+          ИП Мошкова Мария Петровна · ОГРНИП: 321352500046989 · ИНН: 352828841133
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Навигация</h4>
+        <a href="#destinations">Направления</a>
+        <a href="#tours">Туры</a>
+        <a href="#about">О компании</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Документы</h4>
+        <a href="#" aria-label="Политика конфиденциальности">Политика конфиденциальности</a>
+        <a href="#" aria-label="Пользовательское соглашение">Пользовательское соглашение</a>
+        <a href="#" aria-label="Согласие на обработку персональных данных">Обработка персональных данных</a>
+        <a href="#" aria-label="Договор оферты">Договор оферты</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Travel Academy. Все права защищены.</span>
+      <span>Цены актуальны на дату публикации и могут изменяться.</span>
+      <span>Сайт не является публичной офертой.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE NOTICE (ФЗ № 152-ФЗ «О персональных данных») -->
+<div class="cookie-bar" id="cookie-bar" role="dialog" aria-label="Уведомление об использовании cookie" aria-live="polite">
+  <span style="flex:1">
+    Мы используем cookie-файлы для улучшения работы сайта. Продолжая использование сайта, вы соглашаетесь с нашей
+    <a href="#" style="color:var(--rose-mid)">Политикой конфиденциальности</a> и
+    <a href="#" style="color:var(--rose-mid)">Политикой обработки персональных данных</a>.
+  </span>
+  <button class="cookie-accept" onclick="acceptCookie()" aria-label="Принять и закрыть уведомление об использовании cookie">Принять</button>
+</div>
+
+<script>
+// ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ =====
+function setVI(mode) {
+  document.body.classList.remove('vi-white','vi-black','vi-blue');
+  ['vi-white','vi-black','vi-blue','vi-reset'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  if (mode !== 'reset') {
+    document.body.classList.add('vi-' + mode);
+    const btn = document.getElementById('vi-' + mode);
+    if (btn) btn.classList.add('active');
+  }
+  localStorage.setItem('vi-color', mode);
+}
+
+function setFont(size) {
+  document.body.setAttribute('data-font', size);
+  localStorage.setItem('vi-font', size);
+}
+
+function toggleImages() {
+  const btn = document.getElementById('vi-img-btn');
+  if (document.body.classList.toggle('vi-noimg')) {
+    btn.textContent = 'С картинками';
+    btn.classList.add('active');
+  } else {
+    btn.textContent = 'Без картинок';
+    btn.classList.remove('active');
+  }
+  localStorage.setItem('vi-noimg', document.body.classList.contains('vi-noimg'));
+}
+
+// Восстановить настройки
+(function() {
+  const c = localStorage.getItem('vi-color');
+  const f = localStorage.getItem('vi-font');
+  const n = localStorage.getItem('vi-noimg');
+  if (c && c !== 'reset') setVI(c);
+  if (f) setFont(f);
+  if (n === 'true') {
+    document.body.classList.add('vi-noimg');
+    const btn = document.getElementById('vi-img-btn');
+    if (btn) { btn.textContent = 'С картинками'; btn.classList.add('active'); }
+  }
+})();
+
+// ===== COOKIE =====
+function acceptCookie() {
+  document.getElementById('cookie-bar').style.display = 'none';
+  localStorage.setItem('cookie-accepted','1');
+}
+if (localStorage.getItem('cookie-accepted')) {
+  document.getElementById('cookie-bar').style.display = 'none';
+}
+
+// ===== DEST KEYBOARD NAV =====
+document.querySelectorAll('.dest-card').forEach(card => {
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.style.flex = '1.7';
+      setTimeout(() => card.style.flex = '', 2000);
+    }
+  });
+});
+</script>
+</body>
+</html>
