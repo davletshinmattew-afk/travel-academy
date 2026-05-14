@@ -270,6 +270,77 @@ footer { background:var(--ink); color:rgba(255,255,255,0.7); padding:2.5rem 3rem
   .legal-section { padding:3rem 1.2rem; }
   footer { padding:2rem 1.2rem; }
 }
+
+/* ===== MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(58,40,64,0.6);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--cream);border-radius:24px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .3s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes modalIn{from{opacity:0;transform:scale(0.92) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.9);border:1px solid rgba(200,168,130,0.2);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:var(--ink-soft);transition:all .2s;z-index:10}
+.modal-close:hover{background:var(--rose-deep);color:white;border-color:var(--rose-deep)}
+.modal-hero{height:220px;position:relative;display:flex;align-items:center;justify-content:center;font-size:7rem;border-radius:24px 24px 0 0;overflow:hidden}
+.modal-hero-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(58,40,64,0.5) 0%,transparent 50%)}
+.modal-body{padding:1.8rem 2rem 2rem}
+.modal-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:.4rem}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;line-height:1.15;margin-bottom:.8rem}
+.modal-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.modal-meta span{font-size:.7rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:3px 10px;border:1px solid rgba(200,168,130,.2)}
+.modal-desc{font-size:.88rem;color:var(--ink-mid);line-height:1.85;margin-bottom:1.5rem;white-space:pre-wrap}
+.modal-price-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;background:var(--mist);border-radius:14px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;border:1px solid rgba(214,200,240,.4)}
+.modal-price-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.2rem}
+.modal-price-amount{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--ink)}
+.modal-price-sub{font-size:.72rem;color:var(--ink-soft)}
+/* FORM */
+.req-form{background:white;border:1px solid rgba(200,168,130,.18);border-radius:16px;padding:1.5rem}
+.req-form h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;margin-bottom:1rem}
+.req-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.req-full{grid-column:1/-1}
+.req-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:.3rem}
+.req-input{width:100%;padding:.55rem .85rem;border:1px solid rgba(200,168,130,.3);border-radius:10px;font-family:'Jost',sans-serif;font-size:.88rem;color:var(--ink);background:white;outline:none;transition:border-color .2s}
+.req-input:focus{border-color:var(--rose-deep)}
+.req-textarea{resize:vertical;min-height:70px}
+.req-submit{width:100%;background:linear-gradient(135deg,var(--rose-deep),var(--lav-mid));color:white;border:none;padding:.8rem;border-radius:40px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;margin-top:.6rem;transition:opacity .2s}
+.req-submit:hover{opacity:.88}
+.req-success{text-align:center;padding:1.2rem;color:var(--rose-deep);font-size:.9rem;display:none}
+/* ADMIN */
+.admin-overlay{position:fixed;inset:0;background:rgba(58,40,64,0.7);backdrop-filter:blur(8px);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto}
+.admin-overlay.open{display:flex}
+.admin-panel{background:var(--cream);border-radius:24px;max-width:800px;width:100%;padding:2rem;margin:auto;position:relative}
+.admin-panel h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between}
+.admin-login-box{max-width:340px;margin:2rem auto}
+.admin-list{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.5rem;max-height:280px;overflow-y:auto}
+.admin-item{background:white;border:1px solid rgba(200,168,130,.18);border-radius:12px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.8rem}
+.admin-item-info{flex:1;min-width:0}
+.admin-item-name{font-family:'Cormorant Garamond',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-item-dest{font-size:.7rem;color:var(--ink-soft)}
+.admin-item-price{font-size:.85rem;color:var(--rose-deep);white-space:nowrap}
+.admin-item-btns{display:flex;gap:.3rem;flex-shrink:0}
+.a-edit-btn,.a-del-btn{font-size:.65rem;padding:.28rem .65rem;border-radius:20px;cursor:pointer;font-family:'Jost',sans-serif;border:1px solid;transition:all .2s}
+.a-edit-btn{color:var(--ink-mid);border-color:rgba(200,168,130,.3);background:transparent}
+.a-edit-btn:hover{border-color:var(--lav-mid);color:var(--lav-mid)}
+.a-del-btn{color:#E24B4A;border-color:rgba(226,75,74,.25);background:transparent}
+.a-del-btn:hover{background:#E24B4A;color:white}
+.admin-form{background:white;border:1px solid rgba(200,168,130,.18);border-radius:16px;padding:1.5rem}
+.admin-form h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;margin-bottom:1rem}
+.af-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.af-grid.three{grid-template-columns:1fr 1fr 1fr}
+.af-grid.one{grid-template-columns:1fr}
+.af-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:.25rem}
+.af-input{width:100%;padding:.52rem .8rem;border:1px solid rgba(200,168,130,.3);border-radius:8px;font-family:'Jost',sans-serif;font-size:.85rem;color:var(--ink);background:white;outline:none;transition:border-color .2s}
+.af-input:focus{border-color:var(--rose-deep)}
+.af-textarea{resize:vertical;min-height:100px}
+.emoji-row{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.3rem}
+.emoji-opt{font-size:1.3rem;cursor:pointer;padding:.2rem .3rem;border-radius:6px;border:2px solid transparent;transition:all .15s}
+.emoji-opt.sel,.emoji-opt:hover{border-color:var(--rose-deep);background:rgba(201,112,144,.08)}
+.grad-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.3rem}
+.grad-opt{width:36px;height:28px;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.grad-opt.sel,.grad-opt:hover{border-color:var(--rose-deep);transform:scale(1.08)}
+.af-save-btn{background:linear-gradient(135deg,var(--rose-deep),var(--lav-mid));color:white;border:none;padding:.7rem 1.8rem;border-radius:40px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;transition:opacity .2s}
+.af-save-btn:hover{opacity:.88}
+.af-cancel-btn{background:transparent;color:var(--ink-soft);border:1px solid rgba(200,168,130,.3);padding:.7rem 1.3rem;border-radius:40px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-left:.5rem}
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ink);color:white;padding:.65rem 1.1rem;border-radius:10px;font-size:.82rem;z-index:9999;animation:toastIn .3s ease;pointer-events:none}
+@keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.req-grid,.af-grid,.af-grid.three{grid-template-columns:1fr}.modal-body{padding:1.2rem 1rem}}
 </style>
 </head>
 <body>
@@ -312,7 +383,7 @@ footer { background:var(--ink); color:rgba(255,255,255,0.7); padding:2.5rem 3rem
       <li><a href="#about">О компании</a></li>
       <li><a href="#contacts">Контакты</a></li>
     </ul>
-    <button class="nav-cta" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})" aria-label="Подобрать тур — перейти к контактам">Подобрать тур</button>
+    <div style="display:flex;gap:.6rem;align-items:center"><button class="nav-cta" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">Подобрать тур</button><button class="nav-cta" style="background:rgba(214,200,240,.15);border-color:var(--lav-mid);color:var(--ink-mid)" onclick="openAdmin()" aria-label="Управление турами">⚙</button></div>
   </nav>
 </header>
 
@@ -405,14 +476,16 @@ footer { background:var(--ink); color:rgba(255,255,255,0.7); padding:2.5rem 3rem
 <!-- НОВОСТИ -->
 <div class="news-band" role="marquee" aria-label="Актуальные новости туризма" aria-live="off">
   <div class="news-ticker">
-    <span class="news-item">✦ <strong>Турция:</strong> Оплата рублями через СБП — уже 1000+ точек &nbsp;&nbsp;</span>
-    <span class="news-item">✦ <strong>Антарктида:</strong> Новый 2027 год на Swan Hellenic Diana — от $10 410 &nbsp;&nbsp;</span>
-    <span class="news-item">✦ <strong>Бали:</strong> Блоки мест из Москвы Turkish Airlines от 90 900 ₽ &nbsp;&nbsp;</span>
-    <span class="news-item">✦ <strong>Занзибар + Сафари:</strong> Миграция антилоп гну — июнь и сентябрь &nbsp;&nbsp;</span>
-    <span class="news-item">✦ <strong>Турция:</strong> Оплата рублями через СБП — уже 1000+ точек &nbsp;&nbsp;</span>
-    <span class="news-item">✦ <strong>Антарктида:</strong> Новый 2027 год на Swan Hellenic Diana — от $10 410 &nbsp;&nbsp;</span>
-    <span class="news-item">✦ <strong>Бали:</strong> Блоки мест из Москвы Turkish Airlines от 90 900 ₽ &nbsp;&nbsp;</span>
-    <span class="news-item">✦ <strong>Занзибар + Сафари:</strong> Миграция антилоп гну — июнь и сентябрь &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Мальдивы:</strong> Adaaran Club Rannalhi 4★ — 14 ночей, всё включено, 630 400 ₽ на двоих &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Египет:</strong> Sunrise Alora Aquapark 5★ — 7 ночей от 149 000 ₽ за двоих &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Мурманск:</strong> Арктические приключения — киты, сафари, крабы от 187 600 ₽ &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Маврикий:</strong> The Westin Turtle Bay 5★ — 10 ночей Emirates от 298 460 ₽/чел &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Вьетнам Камрань:</strong> Ultra All Inclusive — вылет 24 мая, 253 900 ₽ на двоих &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Мальдивы:</strong> Adaaran Club Rannalhi 4★ — 14 ночей, всё включено, 630 400 ₽ на двоих &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Египет:</strong> Sunrise Alora Aquapark 5★ — 7 ночей от 149 000 ₽ за двоих &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Мурманск:</strong> Арктические приключения — киты, сафари, крабы от 187 600 ₽ &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Маврикий:</strong> The Westin Turtle Bay 5★ — 10 ночей Emirates от 298 460 ₽/чел &nbsp;&nbsp;</span>
+    <span class="news-item">✦ <strong>Вьетнам Камрань:</strong> Ultra All Inclusive — вылет 24 мая, 253 900 ₽ на двоих &nbsp;&nbsp;</span>
   </div>
 </div>
 
@@ -420,142 +493,8 @@ footer { background:var(--ink); color:rgba(255,255,255,0.7); padding:2.5rem 3rem
 <section id="tours" aria-labelledby="tours-heading">
   <div class="sec-label">Актуальные предложения</div>
   <h2 class="sec-title" id="tours-heading">Путешествия, которые<br><em>останутся с вами навсегда</em></h2>
-  <p class="sec-sub">Каждый маршрут — это история. Мы не продаём ночи в отелях, мы создаём воспоминания.</p>
-  <div class="tours-grid">
-
-    <article class="tour-card" aria-label="Тур: Мальдивы — Over Water Villa Experience">
-      <div class="tour-img" style="background:linear-gradient(160deg,#E0F0F8,#A8D0E8)" role="img" aria-label="Мальдивы, лагуна">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🏝</div>
-        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Люкс</div>
-      </div>
-      <div class="tour-body">
-        <div class="tour-tag">Мальдивы · Индийский океан</div>
-        <h3 class="tour-name">Over Water Villa Experience</h3>
-        <p class="tour-desc">Бунгало над лагуной, приватный причал, ужин под звёздами в океане. Полная персонализация под ваш запрос.</p>
-        <div class="tour-footer">
-          <div><span class="tour-price-from">стоимость</span><span class="tour-price-amt">по запросу</span></div>
-          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Мальдивы">Детали</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tour-card" aria-label="Тур: Сейшелы — Острова вне времени">
-      <div class="tour-img" style="background:linear-gradient(160deg,#D0E8D0,#88C0A0)" role="img" aria-label="Сейшелы, гранитные острова">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🌴</div>
-        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Уникально</div>
-      </div>
-      <div class="tour-body">
-        <div class="tour-tag">Сейшелы · Архипелаг</div>
-        <h3 class="tour-name">Острова вне времени</h3>
-        <p class="tour-desc">Ла-Диг, Праслен, Маэ — гранитные острова с нетронутой природой. Частные яхты, скрытые бухты, закаты без туристов.</p>
-        <div class="tour-footer">
-          <div><span class="tour-price-from">стоимость</span><span class="tour-price-amt">по запросу</span></div>
-          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Сейшелы">Детали</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tour-card" aria-label="Тур: Маврикий — The Westin Turtle Bay 5*">
-      <div class="tour-img" style="background:linear-gradient(160deg,#F2C4CE,#D898B8);position:relative;overflow:hidden" role="img" aria-label="Маврикий, The Westin Turtle Bay">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🌺</div>
-        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#C97090;font-family:'Jost',sans-serif">🔥 Горит</div>
-        <div style="position:absolute;top:12px;right:14px;background:rgba(201,112,144,0.9);color:white;border-radius:20px;padding:3px 10px;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase">Новое</div>
-      </div>
-      <div class="tour-body">
-        <div class="tour-tag">Маврикий · Вылет 10 октября · 10 ночей</div>
-        <h3 class="tour-name">The Westin Turtle Bay Resort &amp; Spa 5★</h3>
-        <p class="tour-desc">Отель на берегу живописной бухты с кристально чистой водой и богатым подводным миром. Emirates, полупансион. Продли лето на Маврикии!</p>
-        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
-          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">✈ Emirates</span>
-          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🍽 Полупансион</span>
-          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🛡 Страховка</span>
-        </div>
-        <div class="tour-footer">
-          <div>
-            <span class="tour-price-from">от</span>
-            <span class="tour-price-amt">298 460 ₽</span>
-            <span class="tour-price-sub"> / чел (DBL)</span>
-          </div>
-          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Маврикий The Westin">Детали</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tour-card" aria-label="Тур: Мальдивы — Adaaran Club Rannalhi 4*, 14 ночей всё включено">
-      <div class="tour-img" style="background:linear-gradient(160deg,#C8E8F8,#7EB8D8);position:relative;overflow:hidden" role="img" aria-label="Мальдивы, Adaaran Club Rannalhi">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🏝</div>
-        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#4A90D9;font-family:'Jost',sans-serif">ALL INCLUSIVE</div>
-        <div style="position:absolute;top:12px;right:14px;background:rgba(74,144,217,0.9);color:white;border-radius:20px;padding:3px 10px;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase">Новое</div>
-      </div>
-      <div class="tour-body">
-        <div class="tour-tag">Мальдивы · Вылет 1 июля · 14 ночей</div>
-        <h3 class="tour-name">Adaaran Club Rannalhi 4★</h3>
-        <p class="tour-desc">Компактный уединённый остров с широкой песчаной косой — одно из лучших мест на архипелаге. Прямой рейс из Москвы, всё включено, уютная атмосфера без суеты.</p>
-        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
-          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">✈ Прямой рейс</span>
-          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🍽 Всё включено</span>
-          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🧳 Багаж 23 кг</span>
-          <span style="font-size:0.68rem;color:var(--ink-soft);background:rgba(0,0,0,0.04);border-radius:20px;padding:2px 8px">🚤 Катер ~40 мин</span>
-        </div>
-        <div class="tour-footer">
-          <div>
-            <span class="tour-price-from">от</span>
-            <span class="tour-price-amt">630 400 ₽</span>
-            <span class="tour-price-sub"> / 2 чел</span>
-          </div>
-          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Мальдивы Adaaran Club Rannalhi">Детали</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tour-card" aria-label="Тур: Занзибар — Сафари и Океан">
-      <div class="tour-img" style="background:linear-gradient(160deg,#FAE0A8,#E8B858)" role="img" aria-label="Занзибар, пляж и дикая природа">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">🦁</div>
-        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Эксклюзив</div>
-      </div>
-      <div class="tour-body">
-        <div class="tour-tag">Занзибар · Танзания</div>
-        <h3 class="tour-name">Сафари + Океан</h3>
-        <p class="tour-desc">Миграция антилоп гну, кратер Нгоронгоро, Большая пятёрка — и 4 дня на белых пляжах Занзибара. Июнь или сентябрь.</p>
-        <div class="tour-footer">
-          <div><span class="tour-price-from">от</span><span class="tour-price-amt">386 694 ₽</span><span class="tour-price-sub"> / чел</span></div>
-          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Занзибар, цена от 386694 рублей">Детали</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tour-card" aria-label="Тур: Антарктида — Антарктическая одиссея, Новый год 2027">
-      <div class="tour-img" style="background:linear-gradient(160deg,#D8D0F0,#9888C8)" role="img" aria-label="Антарктида, айсберги">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">❄️</div>
-        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Тяжёлый люкс</div>
-      </div>
-      <div class="tour-body">
-        <div class="tour-tag">Антарктида · Декабрь 2026</div>
-        <h3 class="tour-name">Антарктическая одиссея</h3>
-        <p class="tour-desc">Встреча Нового 2027 года среди айсбергов. Swan Hellenic Diana, русскоязычная группа. Айсберги, пингвины, сауна с видом на полюс.</p>
-        <div class="tour-footer">
-          <div><span class="tour-price-from">от</span><span class="tour-price-amt">$10 410</span><span class="tour-price-sub"> / чел</span></div>
-          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Узнать детали тура Антарктида, цена от 10410 долларов">Детали</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tour-card" aria-label="Авторский маршрут — путешествие под вас">
-      <div class="tour-img" style="background:linear-gradient(160deg,#EAD8C8,#C8A888)" role="img" aria-label="Авторское путешествие">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3" aria-hidden="true">✨</div>
-        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:'Jost',sans-serif">Авторский</div>
-      </div>
-      <div class="tour-body">
-        <div class="tour-tag">Любое направление</div>
-        <h3 class="tour-name">Маршрут под вас</h3>
-        <p class="tour-desc">Расскажите о своей мечте — мы создадим путешествие, которого не существует в каталогах. Полная приватность, ваш темп, ваши желания.</p>
-        <div class="tour-footer">
-          <div><span class="tour-price-from">индивидуально</span><span class="tour-price-amt">от мечты</span></div>
-          <a class="tour-btn" href="https://t.me/marymoshkova" target="_blank" rel="noopener noreferrer" aria-label="Обсудить авторский маршрут">Обсудить</a>
-        </div>
-      </div>
-    </article>
-
+  <p class="sec-sub">Нажмите на тур — откроется полное описание и форма заявки.</p>
+  <div class="tours-grid" id="tours-grid">
   </div>
 </section>
 
@@ -810,6 +749,276 @@ document.querySelectorAll('.dest-card').forEach(card => {
     }
   });
 });
+</script>
+
+<!-- MODAL TOUR DETAIL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" onclick="closeModal()" aria-label="Закрыть">✕</button>
+    <div class="modal-hero" id="modal-hero"></div>
+    <div class="modal-body">
+      <div class="modal-tag" id="modal-tag"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-meta" id="modal-meta"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-price-row">
+        <div>
+          <div class="modal-price-label">Стоимость</div>
+          <div class="modal-price-amount" id="modal-price"></div>
+          <div class="modal-price-sub" id="modal-price-sub"></div>
+        </div>
+        <button class="btn-hero btn-fill" onclick="document.getElementById('req-form').scrollIntoView({behavior:'smooth'})">Оставить заявку</button>
+      </div>
+      <div class="req-form" id="req-form">
+        <h4>Оставить заявку</h4>
+        <div id="req-form-fields">
+          <div class="req-grid">
+            <div><label class="req-label">Ваше имя *</label><input class="req-input" id="req-name" type="text" placeholder="Мария"></div>
+            <div><label class="req-label">Телефон *</label><input class="req-input" id="req-phone" type="tel" placeholder="+7 (___) ___-__-__"></div>
+            <div><label class="req-label">Email</label><input class="req-input" id="req-email" type="email" placeholder="mail@example.com"></div>
+            <div><label class="req-label">Кол-во человек</label><input class="req-input" id="req-pax" type="number" min="1" value="2"></div>
+            <div class="req-full"><label class="req-label">Пожелания</label><textarea class="req-input req-textarea" id="req-comment" placeholder="Даты, тип номера, особые пожелания..."></textarea></div>
+          </div>
+          <button class="req-submit" onclick="submitReq()">Отправить заявку</button>
+        </div>
+        <div class="req-success" id="req-success">✓ Заявка принята! Менеджер свяжется с вами в течение часа.</div>
+      </div>
+      <div style="margin-top:1.5rem;background:var(--warm);border-radius:14px;padding:1.2rem 1.5rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;margin-bottom:.8rem">Или свяжитесь напрямую</div>
+        <div style="display:flex;gap:2rem;flex-wrap:wrap">
+          <div><div style="font-size:.82rem;font-weight:500;color:var(--ink)">Мария Мошкова</div><div style="font-size:.72rem;color:var(--ink-soft);margin-bottom:.3rem">Люкс и авторские маршруты</div><a href="tel:+79211260064" style="display:block;font-size:.82rem;color:var(--rose-deep);text-decoration:none">+7 (921) 126-00-64</a></div>
+          <div><div style="font-size:.82rem;font-weight:500;color:var(--ink)">Юлия</div><div style="font-size:.72rem;color:var(--ink-soft);margin-bottom:.3rem">Специалист по Азии</div><a href="tel:+79268867041" style="display:block;font-size:.82rem;color:var(--rose-deep);text-decoration:none">+7 (926) 886-70-41</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay" id="admin-overlay">
+  <div class="admin-panel">
+    <h2>Управление турами <button onclick="closeAdmin()" style="font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid rgba(200,168,130,.3);color:var(--ink-soft);padding:.3rem .8rem;border-radius:20px;cursor:pointer;font-family:Jost,sans-serif">Выйти</button></h2>
+    <div id="admin-login-box" class="admin-login-box">
+      <div style="margin-bottom:.8rem"><label class="req-label">Пароль</label><input class="req-input" id="admin-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdminPass()"></div>
+      <button class="af-save-btn" style="width:100%" onclick="checkAdminPass()">Войти</button>
+      <div id="admin-pass-err" style="display:none;color:#E24B4A;font-size:.8rem;margin-top:.5rem;text-align:center">Неверный пароль</div>
+    </div>
+    <div id="admin-main" style="display:none">
+      <div class="admin-list" id="admin-list"></div>
+      <div class="admin-form">
+        <h3 id="admin-form-title">Добавить тур</h3>
+        <div class="af-grid"><div><label class="af-label">Название *</label><input class="af-input" id="af-name" type="text" placeholder="Nirvana Cosmopolitan 5★"></div><div><label class="af-label">Направление *</label><input class="af-input" id="af-dest" type="text" placeholder="Турция · Вылет 26.04 · 7 ночей"></div></div>
+        <div class="af-grid three"><div><label class="af-label">Цена</label><input class="af-input" id="af-price" type="text" placeholder="155 402 ₽"></div><div><label class="af-label">Уточнение</label><input class="af-input" id="af-psub" type="text" placeholder="/ чел"></div><div><label class="af-label">Бейдж</label><input class="af-input" id="af-badge" type="text" placeholder="ALL INCLUSIVE"></div></div>
+        <div class="af-grid three"><div><label class="af-label">Дата вылета</label><input class="af-input" id="af-date" type="text" placeholder="26.04"></div><div><label class="af-label">Ночей</label><input class="af-input" id="af-nights" type="text" placeholder="7 ночей"></div><div><label class="af-label">Авиа / трансфер</label><input class="af-input" id="af-airline" type="text" placeholder="Emirates"></div></div>
+        <div class="af-grid one"><div><label class="af-label">Описание *</label><textarea class="af-input af-textarea" id="af-desc" placeholder="Подробное описание тура..."></textarea></div></div>
+        <div style="margin-bottom:.8rem"><label class="af-label">Иконка</label><div class="emoji-row" id="emoji-row"></div></div>
+        <div style="margin-bottom:1rem"><label class="af-label">Цвет карточки</label><div class="grad-row" id="grad-row"></div></div>
+        <div><button class="af-save-btn" onclick="saveTour()">Сохранить</button><button class="af-cancel-btn" id="af-cancel" style="display:none" onclick="cancelEdit()">Отмена</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───
+const PASS = 'travel2025';
+const SK = 'ta_tours_v4';
+const EMOJIS = ['🏝','🌴','🌺','🦁','❄️','✨','🌊','🏔','🌸','🌅','🚢','🐘','🎭','🌿','🏖','🦋'];
+const GRADS = [
+  'linear-gradient(160deg,#C8E8F8,#7EB8D8)',
+  'linear-gradient(160deg,#F2C4CE,#D898B8)',
+  'linear-gradient(160deg,#FAD898,#E0A858)',
+  'linear-gradient(160deg,#D6C8F0,#9888D0)',
+  'linear-gradient(160deg,#C8E8C8,#78C090)',
+  'linear-gradient(160deg,#EAD8C8,#C8A888)',
+  'linear-gradient(160deg,#C8D8F8,#8898D8)',
+  'linear-gradient(160deg,#F8D8F0,#D898C8)',
+  'linear-gradient(160deg,#D8F0E8,#88C0A8)',
+  'linear-gradient(160deg,#F0E8C8,#C8A868)',
+  'linear-gradient(160deg,#E8D8F8,#B898D8)',
+  'linear-gradient(160deg,#F8E8D8,#E0B8A8)',
+];
+
+const DEFAULT_TOURS = [
+  {id:1,name:'Adaaran Club Rannalhi 4★',dest:'Мальдивы · Вылет 1 июля · 14 ночей',price:'630 400 ₽',psub:'/ 2 взрослых',badge:'ALL INCLUSIVE',date:'01.07',nights:'14 ночей',airline:'Прямой рейс',emoji:'🏝',gradient:GRADS[0],isNew:true,createdAt:Date.now()-1000,desc:'Один из тех вариантов, где соотношение цены и качества действительно оправдано.\n\n✔ Трансфер на скоростном катере ~40 минут\n✔ Компактный, очень зелёный остров\n✔ Уютная, спокойная атмосфера без излишней суеты\n✔ Бесплатный Wi-Fi\n\nПляж: широкая песчаная коса — одно из лучших мест на острове.\n\nНомера: стандарты с террасой/балконом и водные бунгало.\n\nПитание: хороший выбор блюд, морепродукты на ужин.\n\nАнимация: вечером живая музыка или караоке, дискотека до 23:00.\n\n✅ В стоимость включено: перелёт, трансфер, проживание, питание ALL, страховка, багаж 23 кг.'},
+  {id:2,name:'The Westin Turtle Bay Resort & Spa 5★',dest:'Маврикий · Вылет 10 октября · 10 ночей',price:'298 460 ₽',psub:'/ чел (DBL)',badge:'🔥 Горит',date:'10.10',nights:'10 ночей',airline:'Emirates',emoji:'🌺',gradient:GRADS[1],isNew:true,createdAt:Date.now()-2000,desc:'Отель расположен на берегу живописной бухты с кристально чистой водой и богатым подводным миром.\n\n✅ В стоимость входит:\n— Перелёт Emirates\n— Проживание 10 ночей\n— Полупансион (HB)\n— Медицинская страховка\n\nОтель: прямой доступ к пляжу, несколько ресторанов, спа-центр, водные развлечения.\n\nПродли лето на Маврикии!'},
+  {id:3,name:'Заполярный Мурманск — летние приключения',dest:'Арктика · Лето 2025',price:'187 600 ₽',psub:'/ чел без перелёта',badge:'🆕 НОВИНКА',date:'Лето 2025',nights:'По программе',airline:'Аэрофлот из Москвы',emoji:'🐘',gradient:GRADS[3],isNew:true,createdAt:Date.now()-3000,desc:'Заполярный Мурманск — летние арктические приключения «под ключ»!\n\n⏩ В стоимость включено:\n— Трансферы и проживание по программе\n— Отель в Мурманске + лагерь/кемпер/коттедж/эко-сфера на выбор\n— Экскурсионное обслуживание с переездами\n\n⏩ Программа:\n— Выход в море и снорклинг с китами\n— Сафари на самой северной точке Европы\n— Посещение коренных народов + кормление оленей\n— Гастрономия: крабы, морепродукты, оленина\n\n💰 от 187 600 руб. без перелёта\n💰 от 209 000 руб. с Аэрофлотом из Москвы'},
+  {id:4,name:'Sunrise Alora Aquapark Resort 5★',dest:'Египет · Вылет 18 мая · 7 ночей',price:'149 000 ₽',psub:'/ 2 взрослых',badge:'ALL INCLUSIVE',date:'18.05',nights:'7 ночей',airline:'Вылет из Москвы',emoji:'🌅',gradient:GRADS[6],isNew:true,createdAt:Date.now()-4000,desc:'Отель на первой береговой линии с аквапарком, детским клубом, спа-центром и активной анимацией.\n\nИдеально для семейного отдыха!\n\n✨ Вылет 18.05, 7 ночей\n✨ ALL INCLUSIVE\n✨ Аквапарк, детский клуб, спа\n\n💰 149 000 ₽ за двоих'},
+  {id:5,name:'SUNRISE Remal Beach Resort 5★',dest:'Египет · Вылет 22 мая · 7 ночей',price:'215 000 ₽',psub:'/ 2 взрослых',badge:'ULTRA ALL INCLUSIVE',date:'22.05',nights:'7 ночей',airline:'Вылет из Москвы',emoji:'🌊',gradient:GRADS[6],isNew:true,createdAt:Date.now()-5000,desc:'Обновлённый отель в бухте Ras Nasrani. 10 минут от аэропорта, первая линия, красивый риф.\n\n💥 Преимущества:\n— Современный дизайн номеров\n— Концепция SUNRISE Grand Select с усиленным питанием\n— Красивый риф и бухта для снорклинга\n\n🏖 Пляж: понтон ~30 метров, зона Posh Club.\n\n🍓 Питание: основной ресторан, a la carte, ресторан Маяк с авторской подачей.\n\nЕсть 4 взрослых бассейна, swim up с подогревом, спа, тренажёрный зал.'},
+  {id:6,name:'Камрань — Ultra All Inclusive',dest:'Вьетнам · Вылет 24 мая · 7 ночей',price:'253 900 ₽',psub:'/ 2 взрослых',badge:'ULTRA ALL INCLUSIVE',date:'24.05',nights:'7 ночей',airline:'Прямой рейс',emoji:'🌴',gradient:GRADS[4],isNew:true,createdAt:Date.now()-6000,desc:'Привет из солнечной Камрани! Погода +32, море +28.\n\nОтдых в новом отеле нового уровня — основанного на чувствах и эмоциях:\n— Меню подушек\n— Меню ароматов\n— Чайные церемонии\n— Кулинарные мастер-классы\n— Мастер-класс по изготовлению арома-масел\n— Шоу фонтанов\n\n💰 253 900 руб. за 2 взрослых\nРасчёт на ваши даты — по запросу.'},
+  {id:7,name:'Сафари + Занзибар',dest:'Танзания · Июнь или сентябрь · 10 ночей',price:'386 694 ₽',psub:'/ чел',badge:'ЭКСКЛЮЗИВ',date:'04.06',nights:'10 ночей',airline:'Из Москвы',emoji:'🦁',gradient:GRADS[2],isNew:false,createdAt:Date.now()-7000,desc:'Уникальное сочетание дикой природы и океанского отдыха.\n\n🦁 Сафари в парке Тарангире\n🌋 Кратер Нгоронгоро\n🐾 Большая пятёрка: лев, леопард, слон, буйвол, носорог\n🐃 Миграция тысяч антилоп гну\n🏝 4 дня на белых пляжах Занзибара\n\nДаты: июнь (04.06–14.06) и сентябрь (10.09–20.09)\nПерелёт из Москвы включён.'},
+  {id:8,name:'Антарктическая одиссея',dest:'Антарктида · 28 декабря 2026 · 11 ночей',price:'от $10 410',psub:'/ чел (без перелёта)',badge:'ТЯЖЁЛЫЙ ЛЮКС',date:'28.12.26',nights:'11 ночей',airline:'Swan Hellenic Diana',emoji:'❄️',gradient:GRADS[3],isNew:false,createdAt:Date.now()-8000,desc:'Встреча Нового 2027 года среди айсбергов на борту Swan Hellenic Diana.\n\nМаршрут: Буэнос-Айрес → Ушуайя → Антарктида\n\nНа борту:\n— All Inclusive\n— Спа и сауна с видом на айсберги\n— Бассейн с подогревом\n— Лекции полярных экспертов\n— Русскоязычная группа\n\n💰 Без перелёта: от $10 410/чел\n💰 С перелётом: от $12 322/чел'},
+  {id:9,name:'Over Water Villa — Мальдивы',dest:'Мальдивы · Индийский океан',price:'по запросу',psub:'',badge:'ЛЮКС',date:'',nights:'',airline:'',emoji:'🏝',gradient:GRADS[0],isNew:false,createdAt:Date.now()-9000,desc:'Бунгало над лагуной, приватный причал, ужин под звёздами в океане.\n\nПолная персонализация: выбор острова, отеля, категории виллы, дат и трансфера.\n\nРаботаем с: One&Only, Soneva, Six Senses, Four Seasons.'},
+  {id:10,name:'Острова вне времени — Сейшелы',dest:'Сейшелы · Архипелаг',price:'по запросу',psub:'',badge:'УНИКАЛЬНО',date:'',nights:'',airline:'',emoji:'🌴',gradient:GRADS[4],isNew:false,createdAt:Date.now()-10000,desc:'Ла-Диг, Праслен, Маэ — гранитные острова с нетронутой природой.\n\nЧастные яхты, скрытые бухты, закаты без туристов.\n\nПодбираем индивидуальные программы: яхт-туры, лучшие бутик-отели, виллы с личным персоналом.'}
+];
+
+let editId = null;
+
+function getTours(){
+  try{const d=localStorage.getItem(SK);if(d)return JSON.parse(d);}catch(e){}
+  saveTours(DEFAULT_TOURS);return DEFAULT_TOURS;
+}
+function saveTours(t){localStorage.setItem(SK,JSON.stringify(t));}
+
+// ─── RENDER GRID ───
+function renderGrid(){
+  const grid=document.getElementById('tours-grid');
+  if(!grid)return;
+  const tours=getTours();
+  if(!tours.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--ink-soft)"><div style="font-size:3rem;margin-bottom:1rem;opacity:.3">✈</div><p>Туров пока нет. Добавьте через панель управления.</p></div>';return;}
+  const now=Date.now();
+  grid.innerHTML=tours.map(t=>{
+    const isNew=t.isNew||(now-t.createdAt<7*24*3600*1000);
+    const pills=[t.date&&'📅 '+t.date,t.nights&&'🌙 '+t.nights,t.airline&&'✈ '+t.airline].filter(Boolean);
+    return `<article class="tour-card" onclick="openTour(${t.id})" style="cursor:pointer" aria-label="Тур: ${t.name}">
+      <div class="tour-img" style="background:${t.gradient}" role="img" aria-label="${t.dest}">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.3">${t.emoji}</div>
+        <div style="position:absolute;top:12px;left:14px;background:rgba(255,255,255,0.85);border-radius:20px;padding:3px 10px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B4E6A;font-family:Jost,sans-serif">${t.badge}</div>
+        ${isNew?'<div style="position:absolute;top:12px;right:14px;background:var(--rose-deep);color:white;border-radius:20px;padding:3px 10px;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase">Новое</div>':''}
+      </div>
+      <div class="tour-body">
+        <div class="tour-tag">${t.dest}</div>
+        <h3 class="tour-name">${t.name}</h3>
+        <p class="tour-desc">${t.desc.split('\n')[0]}</p>
+        ${pills.length?'<div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:.9rem">'+pills.map(p=>'<span style="font-size:.65rem;color:var(--ink-soft);background:rgba(0,0,0,.04);border-radius:20px;padding:2px 8px">'+p+'</span>').join('')+'</div>':''}
+        <div class="tour-footer">
+          <div>
+            <span class="tour-price-from">${t.price==='по запросу'?'':'от'}</span>
+            <span class="tour-price-amt">${t.price}</span>
+            <span class="tour-price-sub"> ${t.psub||''}</span>
+          </div>
+          <button class="tour-btn" onclick="event.stopPropagation();openTour(${t.id})">Подробнее →</button>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+// ─── MODAL ───
+function openTour(id){
+  const t=getTours().find(x=>x.id===id);if(!t)return;
+  document.getElementById('modal-hero').innerHTML=`<div style="position:absolute;inset:0;background:${t.gradient};display:flex;align-items:center;justify-content:center;font-size:7rem">${t.emoji}</div><div class="modal-hero-overlay"></div>`;
+  document.getElementById('modal-tag').textContent=t.dest;
+  document.getElementById('modal-title').textContent=t.name;
+  const pills=[t.date&&'📅 '+t.date,t.nights&&'🌙 '+t.nights,t.airline&&'✈ '+t.airline,t.badge&&'🏷 '+t.badge].filter(Boolean);
+  document.getElementById('modal-meta').innerHTML=pills.map(p=>'<span style="font-size:.7rem;color:var(--ink-soft);background:rgba(0,0,0,.04);border-radius:20px;padding:3px 10px;border:1px solid rgba(200,168,130,.2)">'+p+'</span>').join('');
+  document.getElementById('modal-desc').textContent=t.desc;
+  document.getElementById('modal-price').textContent=t.price;
+  document.getElementById('modal-price-sub').textContent=t.psub||'';
+  document.getElementById('req-form-fields').style.display='block';
+  document.getElementById('req-success').style.display='none';
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  window._currentTour=t.name;
+}
+function closeModal(e){
+  if(e&&e.target!==document.getElementById('modal-overlay')&&!(e.target.classList&&e.target.classList.contains('modal-close')))return;
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeAdmin();}});
+
+function submitReq(){
+  const name=document.getElementById('req-name').value.trim();
+  const phone=document.getElementById('req-phone').value.trim();
+  if(!name||!phone){showToast('Укажите имя и телефон');return;}
+  document.getElementById('req-form-fields').style.display='none';
+  document.getElementById('req-success').style.display='block';
+  showToast('Заявка принята!');
+}
+
+// ─── ADMIN ───
+function openAdmin(){document.getElementById('admin-overlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeAdmin(){document.getElementById('admin-overlay').classList.remove('open');document.body.style.overflow='';}
+function checkAdminPass(){
+  if(document.getElementById('admin-pass').value===PASS){
+    document.getElementById('admin-login-box').style.display='none';
+    document.getElementById('admin-main').style.display='block';
+    renderAdminList();buildEmojiRow();buildGradRow();
+  }else{document.getElementById('admin-pass-err').style.display='block';}
+}
+function renderAdminList(){
+  const list=document.getElementById('admin-list');
+  const tours=getTours();
+  if(!tours.length){list.innerHTML='<div style="color:var(--ink-soft);font-size:.82rem;padding:.3rem">Туров пока нет.</div>';return;}
+  list.innerHTML=tours.map(t=>`<div class="admin-item">
+    <div style="font-size:1.5rem;flex-shrink:0">${t.emoji}</div>
+    <div class="admin-item-info"><div class="admin-item-name">${t.name}</div><div class="admin-item-dest">${t.dest}</div></div>
+    <div class="admin-item-price">${t.price}</div>
+    <div class="admin-item-btns">
+      <button class="a-edit-btn" onclick="startEdit(${t.id})">Изм.</button>
+      <button class="a-del-btn" onclick="delTour(${t.id})">Удал.</button>
+    </div>
+  </div>`).join('');
+}
+function buildEmojiRow(){
+  document.getElementById('emoji-row').innerHTML=EMOJIS.map((e,i)=>`<div class="emoji-opt${i===0?' sel':''}" onclick="selEmoji(this)">${e}</div>`).join('');
+}
+function selEmoji(el){document.querySelectorAll('.emoji-opt').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');}
+function getEmoji(){const el=document.querySelector('.emoji-opt.sel');return el?el.textContent:'🏝';}
+function buildGradRow(){
+  document.getElementById('grad-row').innerHTML=GRADS.map((g,i)=>`<div class="grad-opt${i===0?' sel':''}" style="background:${g}" onclick="selGrad(this)"></div>`).join('');
+}
+function selGrad(el){document.querySelectorAll('.grad-opt').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');}
+function getGrad(){const el=document.querySelector('.grad-opt.sel');return el?el.style.background:GRADS[0];}
+function saveTour(){
+  const name=document.getElementById('af-name').value.trim();
+  const dest=document.getElementById('af-dest').value.trim();
+  const desc=document.getElementById('af-desc').value.trim();
+  if(!name||!dest||!desc){showToast('Заполните обязательные поля');return;}
+  const tours=getTours();
+  const t={id:editId||Date.now(),name,dest,desc,
+    price:document.getElementById('af-price').value.trim()||'по запросу',
+    psub:document.getElementById('af-psub').value.trim(),
+    badge:document.getElementById('af-badge').value.trim()||'Тур',
+    date:document.getElementById('af-date').value.trim(),
+    nights:document.getElementById('af-nights').value.trim(),
+    airline:document.getElementById('af-airline').value.trim(),
+    emoji:getEmoji(),gradient:getGrad(),
+    isNew:!editId,createdAt:editId?(tours.find(x=>x.id===editId)||{}).createdAt||Date.now():Date.now()};
+  if(editId){const i=tours.findIndex(x=>x.id===editId);if(i>=0)tours[i]=t;}
+  else tours.unshift(t);
+  saveTours(tours);resetForm();renderAdminList();renderGrid();
+  showToast(editId?'Тур обновлён!':'Тур добавлен!');editId=null;
+}
+function startEdit(id){
+  const t=getTours().find(x=>x.id===id);if(!t)return;
+  editId=id;
+  document.getElementById('af-name').value=t.name;
+  document.getElementById('af-dest').value=t.dest;
+  document.getElementById('af-price').value=t.price;
+  document.getElementById('af-psub').value=t.psub||'';
+  document.getElementById('af-badge').value=t.badge;
+  document.getElementById('af-date').value=t.date||'';
+  document.getElementById('af-nights').value=t.nights||'';
+  document.getElementById('af-airline').value=t.airline||'';
+  document.getElementById('af-desc').value=t.desc;
+  document.getElementById('admin-form-title').textContent='Редактировать тур';
+  document.getElementById('af-cancel').style.display='inline-block';
+  const ei=EMOJIS.indexOf(t.emoji);
+  document.querySelectorAll('.emoji-opt').forEach((el,i)=>el.classList.toggle('sel',i===ei));
+  const gi=GRADS.indexOf(t.gradient);
+  document.querySelectorAll('.grad-opt').forEach((el,i)=>el.classList.toggle('sel',i===gi));
+  document.getElementById('admin-form-title').scrollIntoView({behavior:'smooth'});
+}
+function cancelEdit(){editId=null;resetForm();}
+function resetForm(){
+  ['af-name','af-dest','af-price','af-psub','af-badge','af-date','af-nights','af-airline','af-desc'].forEach(id=>{document.getElementById(id).value='';});
+  document.getElementById('admin-form-title').textContent='Добавить тур';
+  document.getElementById('af-cancel').style.display='none';
+  buildEmojiRow();buildGradRow();
+}
+function delTour(id){
+  if(!confirm('Удалить тур?'))return;
+  saveTours(getTours().filter(t=>t.id!==id));
+  renderAdminList();renderGrid();showToast('Удалено');
+}
+function showToast(msg){
+  const t=document.createElement('div');t.className='toast';t.textContent=msg;
+  document.body.appendChild(t);setTimeout(()=>t.remove(),2500);
+}
+
+renderGrid();
 </script>
 </body>
 </html>
