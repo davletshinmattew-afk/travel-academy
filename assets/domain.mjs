@@ -38,3 +38,5 @@ export function composeRequest(d){
  const method={telegram:'Telegram',phone:'Телефон',email:'Email'}[d.method]||'Контакт';
  return ['Здравствуйте! Хочу подобрать путешествие.',d.offerName&&`Предложение: ${d.offerName}`,d.offerId&&`Код предложения: ${d.offerId}`,d.variantLabel&&`Вариант: ${d.variantLabel}`,d.variantPrice&&`Ориентир цены: ${d.variantPrice}`,d.variantId&&`Код варианта: ${d.variantId}`,d.name&&`Имя: ${d.name}`,d.contact&&`${method}: ${d.contact}`,d.destination&&`Направление: ${d.destination}`,d.dateFrom&&`Начало: ${d.dateFrom}`,d.dateTo&&`Окончание: ${d.dateTo}`,d.flexible&&'Даты можно сдвинуть.',`Состав: ${d.adults} взр., ${d.children||0} дет.`,d.childAges&&`Возраст детей: ${d.childAges}`,d.budget&&`Бюджет: ${new Intl.NumberFormat('ru-RU').format(Number(d.budget))} ₽ ${d.budgetBasis==='person'?'на человека':'на поездку'}`,d.wishes&&`Пожелания: ${d.wishes}`].filter(Boolean).join('\n');
 }
+
+export function safeSourceUrl(value){try{const u=new URL(String(value));return u.protocol==='https:'&&u.hostname==='t.me'&&!u.username&&!u.password&&!u.port?u.href:null;}catch{return null;}}
