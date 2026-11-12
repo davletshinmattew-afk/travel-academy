@@ -1,0 +1,1 @@
+window.TRAVEL_CONFIG={siteUrl:'https://travel-academy.online',maria:'marymoshkova',julia:'Julya_supernova',formEndpoint:'api/request.php',formAvailable:false,responseTime:'Ответим в рабочее время',hours:'Пн–пт 10:00–19:00, сб 11:00–16:00 · Москва',privacyVersion:'2026-11-11'};
